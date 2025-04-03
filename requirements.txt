@@ -6,3 +6,4 @@ pandas_ta
 yfinance
 python-jose
 requests
+uvicorn
