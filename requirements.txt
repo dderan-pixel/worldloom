@@ -8,5 +8,6 @@ python-jose
 requests
 uvicorn
 PyJWT
-echo "numpy==1.23.5" >> requirements.txt
 echo "pandas-ta==0.3.14b0" >> requirements.txt
+numpy==1.23.5
+pandas-ta==0.3.14b0
