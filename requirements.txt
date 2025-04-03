@@ -7,3 +7,4 @@ yfinance
 python-jose
 requests
 uvicorn
+PyJWT
