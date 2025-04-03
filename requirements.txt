@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+openai
+pandas
+pandas_ta
+yfinance
+python-jose
+requests
