@@ -1,13 +1,10 @@
 fastapi
 uvicorn
 openai
-pandas
-pandas_ta
+pandas>=2.3.2
+pandas-ta>=0.4.67b0
 yfinance
 python-jose
 requests
-uvicorn
 PyJWT
-numpy==1.23.5
-pandas==1.5.3
-pandas-ta==0.3.14b0
+numpy>=2.2.0
