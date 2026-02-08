@@ -70,7 +70,7 @@ def get_language(accept_language: str = Header(default="en")):
 
 @app.get("/")
 def root():
-    return {"message": "🚀 Worldloom backend is running!"}
+    return {"message": "🚀 SD backend is running!"}
 
 @app.post("/chat")
 def chat(data: ChatRequest):
