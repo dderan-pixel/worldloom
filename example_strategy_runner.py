@@ -176,7 +176,7 @@ async def run_mean_reversion_backtest():
 
 async def main():
     """Main entry point"""
-    logger.info("Worldloom Strategy Backtesting")
+    logger.info("SD Strategy Backtesting")
     logger.info("=" * 60)
     
     # Run momentum backtest

@@ -1,8 +1,8 @@
-# Worldloom Trading System - Architecture Documentation
+# SD Trading System - Architecture Documentation
 
 ## System Overview
 
-Worldloom is a production-grade, modular algorithmic trading system designed for cryptocurrency markets. It provides institutional-level reliability, comprehensive risk management, and extensive monitoring capabilities.
+SD is a production-grade, modular algorithmic trading system designed for cryptocurrency markets. It provides institutional-level reliability, comprehensive risk management, and extensive monitoring capabilities.
 
 ## Architecture Layers
 

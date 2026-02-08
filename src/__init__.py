@@ -1,5 +1,5 @@
 """
-Worldloom - Production-Grade Multi-Exchange Algorithmic Trading System
+SD - Production-Grade Multi-Exchange Algorithmic Trading System
 
 A modular, institutional-grade cryptocurrency trading platform with:
 - Real-time multi-exchange data ingestion
@@ -11,4 +11,4 @@ A modular, institutional-grade cryptocurrency trading platform with:
 """
 
 __version__ = "1.0.0"
-__author__ = "Worldloom Trading Systems"
+__author__ = "SD Trading Systems"

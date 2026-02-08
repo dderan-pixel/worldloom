@@ -1,10 +1,10 @@
-# Worldloom - Production-Grade Multi-Exchange Algorithmic Trading System
+# SD - Production-Grade Multi-Exchange Algorithmic Trading System
 
 A modular, institutional-grade cryptocurrency trading platform designed for reliability, scalability, and risk management.
 
 ## 🏗️ Architecture Overview
 
-Worldloom is built with a clean separation of concerns across multiple layers:
+SD is built with a clean separation of concerns across multiple layers:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -95,8 +95,8 @@ Worldloom is built with a clean separation of concerns across multiple layers:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/worldloom.git
-cd worldloom
+git clone https://github.com/yourusername/sd.git
+cd sd
 ```
 
 2. **Create virtual environment**

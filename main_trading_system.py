@@ -49,7 +49,7 @@ class TradingSystem:
             config_path: Path to configuration file
         """
         logger.info("=" * 60)
-        logger.info("Worldloom Trading System Starting")
+        logger.info("SD Trading System Starting")
         logger.info("=" * 60)
         
         # Load configuration
@@ -241,7 +241,7 @@ async def main():
     """Main entry point"""
     import argparse
     
-    parser = argparse.ArgumentParser(description='Worldloom Trading System')
+    parser = argparse.ArgumentParser(description='SD Trading System')
     parser.add_argument(
         '--config',
         type=str,

@@ -25,7 +25,7 @@ def create_dashboard_app(config: Dict) -> FastAPI:
         FastAPI application
     """
     app = FastAPI(
-        title="Worldloom Trading Dashboard",
+        title="SD Trading Dashboard",
         description="Production-grade algorithmic trading system",
         version="1.0.0"
     )
@@ -58,7 +58,7 @@ def create_dashboard_app(config: Dict) -> FastAPI:
         """Health check endpoint"""
         return {
             "status": "online",
-            "system": "Worldloom Trading System",
+            "system": "SD Trading System",
             "timestamp": datetime.now().isoformat()
         }
     
