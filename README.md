@@ -116,6 +116,46 @@ npm run dev
 
 ## Deployment
 
+### Quick Deploy
+
+Use the deployment wizard for step-by-step guidance:
+
+```bash
+./deploy.sh
+```
+
+Or deploy manually:
+
+```bash
+# 1. Deploy contracts
+cd packages/contracts
+npm run deploy:testnet
+
+# 2. Deploy frontend
+cd ../../apps/web
+vercel --prod
+
+# 3. Deploy backend
+cd ../api
+railway up
+```
+
+### Deploy to Your Own Domain
+
+For complete instructions on deploying to production with your custom domain:
+
+**📖 See [DEPLOYMENT.md](./DEPLOYMENT.md)** for English version
+
+**📖 See [DEPLOYMENT_TR.md](./DEPLOYMENT_TR.md)** for Turkish version (Türkçe)
+
+Deployment guides include:
+- Smart contract deployment to Base Sepolia
+- Frontend deployment to Vercel with custom domain
+- Backend deployment to Railway/Render/Fly.io
+- DNS configuration and SSL setup
+- Environment variables setup
+- Cost estimates and scaling guide
+
 ### Deploy to Base Testnet
 
 1. Set up your environment variables:
