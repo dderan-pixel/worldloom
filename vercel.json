@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd worldloom-ui && npm run build",
+  "outputDirectory": "worldloom-ui/dist",
+  "devCommand": "cd worldloom-ui && npm run dev",
+  "installCommand": "cd worldloom-ui && npm install",
+  "framework": null,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/worldloom-ui/dist/$1"
+    }
+  ]
+}
