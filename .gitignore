@@ -1,2 +1,42 @@
+# Environment files
 .env
-.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+.next
+out
+build
+*.log
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Foundry
+cache
+out
+broadcast
+
+# Hardhat
+artifacts
+typechain-types
