@@ -1,0 +1,216 @@
+# Production-Grade Multi-Exchange Algorithmic Trading System Configuration
+
+# System Configuration
+system:
+  mode: paper_trading  # paper_trading or live
+  log_level: INFO
+  timezone: UTC
+
+# Exchange Configuration
+exchanges:
+  binance:
+    enabled: true
+    api_key: ${BINANCE_API_KEY}
+    api_secret: ${BINANCE_API_SECRET}
+    market_type: spot  # spot or future
+    symbols:
+      - BTC/USDT
+      - ETH/USDT
+      - SOL/USDT
+    testnet: false
+  
+  bybit:
+    enabled: false
+    api_key: ${BYBIT_API_KEY}
+    api_secret: ${BYBIT_API_SECRET}
+    market_type: linear
+    symbols:
+      - BTC/USDT
+      - ETH/USDT
+    testnet: false
+  
+  okx:
+    enabled: false
+    api_key: ${OKX_API_KEY}
+    api_secret: ${OKX_API_SECRET}
+    market_type: spot
+    symbols:
+      - BTC/USDT
+      - ETH/USDT
+    testnet: false
+
+# Data Layer Configuration
+data:
+  websocket:
+    enabled: true
+    reconnect_delay: 5
+    max_reconnect_attempts: 10
+  
+  historical:
+    default_timeframe: 1h
+    lookback_days: 30
+    update_interval: 3600  # seconds
+  
+  storage:
+    db_host: ${DB_HOST:localhost}
+    db_port: ${DB_PORT:5432}
+    db_name: ${DB_NAME:trading_db}
+    db_user: ${DB_USER:postgres}
+    db_password: ${DB_PASSWORD}
+    parquet_path: ./data/parquet
+
+# Strategy Configuration
+strategies:
+  momentum:
+    enabled: true
+    symbols:
+      - BTC/USDT
+      - ETH/USDT
+    timeframe: 1h
+    lookback_period: 100
+    max_position_size: 0.15
+    stop_loss_pct: 0.02
+    take_profit_pct: 0.05
+    risk_per_trade: 0.01
+  
+  mean_reversion:
+    enabled: true
+    symbols:
+      - BTC/USDT
+      - ETH/USDT
+    timeframe: 15m
+    lookback_period: 100
+    max_position_size: 0.1
+    stop_loss_pct: 0.015
+    take_profit_pct: 0.03
+    risk_per_trade: 0.008
+
+# Risk Management Configuration
+risk:
+  # Portfolio Limits
+  max_portfolio_exposure: 0.8  # 80% of portfolio
+  max_single_position: 0.2     # 20% per position
+  max_sector_exposure: 0.3     # 30% per sector
+  max_leverage: 3.0
+  
+  # Drawdown Protection
+  drawdown:
+    max_drawdown: 0.20         # 20% maximum drawdown
+    max_daily_drawdown: 0.05   # 5% daily
+    max_weekly_drawdown: 0.10  # 10% weekly
+  
+  # Circuit Breaker
+  circuit_breaker:
+    enabled: true
+    volatility_threshold: 0.10      # 10% volatility spike
+    rapid_loss_threshold: 0.03      # 3% rapid loss
+    rapid_loss_window: 300          # 5 minutes
+    cooldown_period: 900            # 15 minutes
+  
+  # Exposure Limits
+  exposure:
+    check_correlation: true
+    correlation_threshold: 0.7
+
+# Position Sizing Configuration
+position_sizing:
+  portfolio_value: 100000  # Initial portfolio value
+  max_risk_per_trade: 0.02  # 2% risk per trade
+  max_portfolio_risk: 0.06  # 6% total portfolio risk
+  target_volatility: 0.15   # 15% annualized
+  use_kelly: false
+  kelly_fraction: 0.25      # Use 25% of Kelly
+  max_position_size: 0.2    # 20% of portfolio
+  min_position_size: 0.01   # 1% of portfolio
+
+# Volatility Regime Configuration
+volatility:
+  enabled: true
+  short_window: 20
+  long_window: 100
+  low_threshold: 25     # percentile
+  high_threshold: 75
+  extreme_threshold: 95
+
+# Execution Configuration
+execution:
+  order_type: limit  # market or limit
+  max_slippage: 0.005  # 0.5%
+  exchange_priorities:
+    - binance
+    - bybit
+    - okx
+  retry_attempts: 3
+  retry_delay: 2  # seconds
+  
+  # TWAP/VWAP Settings
+  twap:
+    enabled: false
+    num_slices: 10
+    interval: 60  # seconds
+  
+  vwap:
+    enabled: false
+    target_volume_pct: 0.1  # 10% of market volume
+
+# Portfolio Management Configuration
+portfolio:
+  initial_capital: 100000
+  cash_reserve_pct: 0.1  # Keep 10% in cash
+  rebalance_frequency: 86400  # Daily (seconds)
+  performance_update_interval: 3600  # Hourly
+
+# Monitoring Configuration
+monitoring:
+  # Web Dashboard
+  dashboard:
+    enabled: true
+    host: 0.0.0.0
+    port: 8000
+    cors_origins:
+      - http://localhost:3000
+      - http://localhost:5173
+  
+  # Telegram Alerts
+  telegram:
+    enabled: false
+    token: ${TELEGRAM_TOKEN}
+    chat_id: ${TELEGRAM_CHAT_ID}
+    alert_on:
+      - trade_execution
+      - risk_violation
+      - circuit_breaker
+      - significant_pnl
+  
+  # Health Monitoring
+  heartbeat:
+    enabled: true
+    interval: 60  # seconds
+    
+  # Logging
+  logging:
+    level: INFO
+    format: json
+    file: ./logs/trading.log
+    rotation: daily
+    retention_days: 30
+
+# Backtesting Configuration
+backtesting:
+  start_date: 2023-01-01
+  end_date: 2024-01-01
+  initial_capital: 100000
+  commission: 0.001  # 0.1%
+  slippage: 0.0005   # 0.05%
+  
+  # Walk-Forward Testing
+  walk_forward:
+    enabled: true
+    train_period_days: 180
+    test_period_days: 30
+  
+  # Monte Carlo
+  monte_carlo:
+    enabled: true
+    num_simulations: 1000
+    confidence_level: 0.95
