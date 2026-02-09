@@ -1,0 +1,27 @@
+{
+  "name": "predictx-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PredictX Hybrid Prediction Market MVP",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "contracts:test": "npm run test --workspace=@predictx/contracts",
+    "contracts:deploy:local": "npm run deploy:local --workspace=@predictx/contracts",
+    "contracts:deploy:testnet": "npm run deploy:testnet --workspace=@predictx/contracts"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
