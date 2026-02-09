@@ -5,6 +5,7 @@
   "devCommand": "cd worldloom-ui && npm run dev",
   "installCommand": "cd worldloom-ui && npm install",
   "framework": null,
+  "ignoreCommand": "exit 0",
   "routes": [
     {
       "src": "/(.*)",

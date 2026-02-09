@@ -25,13 +25,26 @@ Output directory: `dist/`
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/dderan-pixel/worldloom)
 
-### Manual Configuration
+### Method 1: Deploy from Subdirectory (Recommended)
 
-1. **Root Directory**: Set to `worldloom-ui` in Vercel project settings
+**IMPORTANT**: The repository root contains Python backend files that should NOT be deployed to Vercel.
+
+**In Vercel Project Settings:**
+
+1. **Root Directory**: Set to `worldloom-ui` ⚠️ **CRITICAL**
 2. **Framework Preset**: Vite
 3. **Build Command**: `npm run build`
 4. **Output Directory**: `dist`
 5. **Install Command**: `npm install`
+
+**Why this matters**: Setting the root directory to `worldloom-ui` ensures Vercel only sees the frontend files and ignores Python files at the repository root.
+
+### Method 2: Using vercel.json Configuration
+
+If you cannot set the root directory in settings, the repository includes:
+- `.vercelignore` - Excludes Python files from deployment
+- `vercel.json` (root) - Configures build to target worldloom-ui only
+- `vercel.json` (worldloom-ui) - Frontend-specific configuration
 
 ### Environment Variables
 
@@ -41,9 +54,22 @@ No environment variables are required for the basic frontend deployment. If you 
 
 ### Important Notes
 
-- The project root contains Python backend files (`main.py`, `requirements.txt`) which should **NOT** be deployed to Vercel
-- A `vercel.json` file at the repository root ensures only the frontend (`worldloom-ui`) is built and deployed
-- Python version is pinned to 3.11 in `.python-version` to prevent Vercel from attempting Python builds
+⚠️ **Critical Configuration**: 
+- **Root Directory MUST be set to `worldloom-ui`** in Vercel project settings
+- Without this, Vercel will attempt to build the Python backend and fail
+- The Python files (`main.py`, `requirements.txt`) are for backend deployment elsewhere (Railway, Render, etc.)
+
+### Troubleshooting
+
+**Error: "pandas-ta==0.3.14b0" not found**
+- This means Vercel is trying to build Python instead of the frontend
+- **Solution**: Ensure Root Directory is set to `worldloom-ui` in Vercel project settings
+- Go to: Project Settings → General → Root Directory → Enter `worldloom-ui` → Save
+
+**Error: Build fails with Python errors**
+- Vercel should never be building Python
+- Verify Root Directory setting in Vercel dashboard
+- Check that `.vercelignore` file exists at repository root
 
 ## Technical Stack
 

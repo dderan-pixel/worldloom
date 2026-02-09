@@ -1,0 +1,15 @@
+# Ignore Python backend files - only deploy frontend
+requirements.txt
+main.py
+*.py
+*.pyc
+__pycache__/
+.python-version
+
+# Ignore other backend/build artifacts
+apps/
+packages/
+docker-compose.yml
+Dockerfile
+setup.sh
+deploy.sh
